@@ -1,0 +1,6 @@
+framework module Pods_timezoneIOS {
+  umbrella header "Pods-timezoneIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
