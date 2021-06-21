@@ -16,20 +16,20 @@ struct Calculator: View {
     @State private var timezoneHelper = TimeZoneHelperImpl()
     @State private var meetingHours = [Int]()
     @State var showHoursDialog: Bool = false
-
+    
     @ObservedObject var calculatorVariables: CalculatorVariables
-
+    
     var body: some View {
         VStack {
             NavigationView {
-                Form {
-                    VStack {
-                        Spacer()
-                            .frame(height: 8)
-                        Text("Find Meetings")
-                            .bold()
-                        Spacer()
-                            .frame(height: 8)
+                VStack {
+                    Spacer()
+                        .frame(height: 8)
+                    Text("Find Meetings")
+                        .bold()
+                    Spacer()
+                        .frame(height: 8)
+                    Form {
                         Section(header: Text("Time Range")) {
                             HStack() {
                                 Picker("Start Time", selection: $selectedStartIndex, content: {
@@ -46,11 +46,7 @@ struct Calculator: View {
                                 })
                             }
                         }
-                        Spacer()
-                            .frame(height: 16)
                         Section(header: Text("Time Zones")) {
-                            Spacer()
-                                .frame(height: 16)
                             List() {
                                 ForEach(Array(timezones.selectedTimezones), id: \.self) {  timezone in
                                     HStack {
@@ -59,24 +55,22 @@ struct Calculator: View {
                                     }
                                 }
                             }
-                            Group {
-                                Spacer()
-                                Button(action: {
-                                    meetingHours.removeAll()
-                                    let hours = timezoneHelper.search(startHour:Int32(selectedStartIndex), endHour:Int32(selectedEndIndex), timezoneStrings:Array(timezones.selectedTimezones))
-                                    let hourInts = hours.map { kotinHour in
-                                        Int(truncating: kotinHour)
-                                    }
-                                    meetingHours.append(contentsOf: hourInts)
-                                    calculatorVariables.showHoursDialog = true
-//                                    showHoursDialog = true
-                                }, label: {
-                                    Text("Search")
-                                })
-                            }
                         }
-                    } // VStack
-                } // Form
+                    } // Form
+                    Spacer()
+                    Button(action: {
+                        meetingHours.removeAll()
+                        let hours = timezoneHelper.search(startHour:Int32(selectedStartIndex), endHour:Int32(selectedEndIndex), timezoneStrings:Array(timezones.selectedTimezones))
+                        let hourInts = hours.map { kotinHour in
+                            Int(truncating: kotinHour)
+                        }
+                        meetingHours.append(contentsOf: hourInts)
+                        calculatorVariables.showHoursDialog = true
+                        //                                    showHoursDialog = true
+                    }, label: {
+                        Text("Search")
+                    })
+                } // VStack
             } // NavigationView
             .frame(
                 minWidth: 0,
@@ -86,7 +80,7 @@ struct Calculator: View {
                 alignment: .top
             )
             Text("").hidden().sheet(isPresented: $calculatorVariables.showHoursDialog) {
-//                HourSheet(hours: $meetingHours, showHoursDialog: $showHoursDialog)
+                //                HourSheet(hours: $meetingHours, showHoursDialog: $showHoursDialog)
                 HourSheet(hours: $meetingHours, calculatorVariables: calculatorVariables)
             }
         }

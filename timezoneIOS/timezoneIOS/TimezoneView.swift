@@ -12,16 +12,26 @@ import shared
 struct TimezoneView: View {
     @EnvironmentObject var timezones : TimezoneItems
     @State private var timezoneHelper = TimeZoneHelperImpl()
-//    @EnvironmentObject var presentations: Presentations
     @ObservedObject var timezoneVariables: TimezoneVariables
-
+    @State var currentDate = Date()
+    let timer = Timer.publish(every: 1000, on: .main, in: .common).autoconnect()
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
-                    Text("6:50 pm")
+                    Text("\(currentDate, formatter: dateFormatter)")
                         .bold()
                         .font(.system(size: 56.0))
+                        .onReceive(timer) { input in
+                            currentDate = input
+                        }
                     List() {
                         ForEach(Array(timezones.selectedTimezones), id: \.self) {  timezone in
                             HStack {
@@ -30,20 +40,21 @@ struct TimezoneView: View {
                                 Text(timezoneHelper.getTime(timezoneId: timezone))
                             }
                         }
+                        .onDelete(perform: deleteItems)
                     }
                     Spacer()
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                HStack {
-                                    Spacer()
-                                    Image(systemName: "plus")
-                                        .frame(alignment: .trailing)
-                                }
-                                .onTapGesture {
-                                    timezoneVariables.showTimezoneDialog = true
-                                }
-                            }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "plus")
+                                .frame(alignment: .trailing)
                         }
+                        .onTapGesture {
+                            timezoneVariables.showTimezoneDialog = true
+                        }
+                    }
                 }
             }
             .frame(
@@ -59,6 +70,12 @@ struct TimezoneView: View {
             }
         }
         
+    }
+    func deleteItems(at offsets: IndexSet) {
+        for index in offsets {
+            let element = Array(timezones.selectedTimezones)[index]
+            timezones.selectedTimezones.remove(element)
+        }
     }
     
 }
