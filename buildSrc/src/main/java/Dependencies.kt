@@ -5,15 +5,16 @@ object Versions {
 
     const val kotlin = "1.5.10"
     const val kotlin_gradle_plugin = "1.5.10"
-//    const val kotlin_gradle_plugin = "1.5.20-M1"
-//    const val android_gradle_plugin = "4.1.3"
-//    const val android_gradle_plugin = "4.2.0"
-    const val android_gradle_plugin = "7.1.0-alpha02"
+//    const val kotlin = "1.5.21"
+//    const val kotlin_gradle_plugin = "1.5.21"
+    const val android_gradle_plugin = "4.2.0"
+//    const val android_gradle_plugin = "7.1.0-alpha04"
+    const val compose_gradle_plugin = "0.5.0-build262"
+    const val desktop_compose_version = "0.5.0-build262"
 
-    const val buildToolsVersion = "30.0.3"
     const val coroutines = "1.5.0-native-mt"
     const val kermit = "0.1.9"
-    const val koin = "3.0.2"
+    const val koin = "3.1.1"
     const val ktlint_gradle_plugin = "10.1.0"
     const val ktor = "1.6.0"
     const val junit = "4.13.2"
@@ -25,8 +26,8 @@ object Versions {
     const val stately = "1.1.7"
     const val kotlinxDateTime = "0.2.1"
     const val turbine = "0.5.1"
-    const val compose= "1.0.0-beta08"
-    const val compose_compiler= "1.5.10"
+//    const val compose= "1.0.0-rc02"
+    const val compose= "1.0.0-beta09"
     const val activity_compose = "1.3.0-alpha08"
     const val coil= "0.8.1"
     const val datetime = "0.2.1"
@@ -51,6 +52,8 @@ object Versions {
 
 object Deps {
     const val android_gradle_plugin = "com.android.tools.build:gradle:${Versions.android_gradle_plugin}"
+    const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_gradle_plugin}"
+    const val compose_gradle_plugin = "org.jetbrains.compose:compose-gradle-plugin:${Versions.compose_gradle_plugin}"
     const val junit = "junit:junit:${Versions.junit}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
@@ -78,6 +81,7 @@ object Deps {
 
     object Koin {
         val core = "io.insert-koin:koin-core:${Versions.koin}"
+        val jvm = "io.insert-koin:koin-core-jvm:${Versions.koin}"
         val test = "io.insert-koin:koin-test:${Versions.koin}"
         val android = "io.insert-koin:koin-android:${Versions.koin}"
         val compose = "io.insert-koin:koin-androidx-compose:3.0.1"
@@ -137,6 +141,9 @@ object Deps {
 
     object JetBrains {
         const val datetime = "org.jetbrains.kotlinx:kotlinx-datetime:${Versions.datetime}"
+        object DesktopCompose {
+            const val desktopUi = "org.jetbrains.compose.ui:ui-desktop:${Versions.desktop_compose_version}"
+        }
     }
 
     object Ktor {

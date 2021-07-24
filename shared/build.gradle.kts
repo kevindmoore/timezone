@@ -28,7 +28,8 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting {
+        named("commonMain") {
+            kotlin.srcDirs("src/commonMain/kotlin")
             dependencies {
                 implementation(Deps.JetBrains.datetime)
                 // koin
@@ -38,32 +39,39 @@ kotlin {
                 implementation(Deps.napier)
                 // Coroutines
                 implementation(Deps.Coroutines.common)
-
             }
         }
-        val commonTest by getting {
+/*
+        named("commonTest") {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
-        val androidTest by getting {
+        named("androidMain") {
+
+        }
+        named("androidTest") {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
-        val iosTest by getting
+        named("iosMain") {
+
+        }
+        named("iosTest") {
+
+        }
+*/
     }
 }
 
 android {
-    compileSdkVersion(Versions.compile_sdk)
+    compileSdk =  Versions.compile_sdk
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(Versions.min_sdk)
-        targetSdkVersion(Versions.target_sdk)
+        minSdk = Versions.min_sdk
+        targetSdk = Versions.target_sdk
     }
 }

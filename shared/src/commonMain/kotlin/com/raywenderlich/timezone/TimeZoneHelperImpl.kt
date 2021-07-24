@@ -2,6 +2,8 @@ package com.raywenderlich.timezone
 
 import kotlinx.datetime.*
 import io.github.aakira.napier.Napier
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.native.concurrent.SharedImmutable
 
 class TimeZoneHelperImpl : TimeZoneHelper {
@@ -24,7 +26,7 @@ class TimeZoneHelperImpl : TimeZoneHelper {
 
     override fun search(startHour: Int, endHour: Int, timezoneStrings: List<String>): List<Int> {
         val goodHours = mutableListOf<Int>()
-        val timeRange = IntRange(startHour, endHour)
+        val timeRange = IntRange(max(0, startHour), min(23, endHour))
         for (hour in timeRange) {
             var isGoodHour = true
             for (zone in timezoneStrings) {

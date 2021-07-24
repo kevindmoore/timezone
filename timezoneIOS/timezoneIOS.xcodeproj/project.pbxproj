@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A121669269FE88900971F7D /* CardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A121668269FE88900971F7D /* CardModifier.swift */; };
 		0A1E215F2679C40A0026DFDB /* TimezoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E215C2679C40A0026DFDB /* TimezoneView.swift */; };
 		0A1E21602679C40A0026DFDB /* Searchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E215D2679C40A0026DFDB /* Searchbar.swift */; };
 		0A1E21612679C40A0026DFDB /* TimezoneDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E215E2679C40A0026DFDB /* TimezoneDialog.swift */; };
@@ -14,12 +15,26 @@
 		0A1E2165267E2F370026DFDB /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E2164267E2F370026DFDB /* Calculator.swift */; };
 		0A1E2167267E51080026DFDB /* HourSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E2166267E51080026DFDB /* HourSheet.swift */; };
 		0A67C720267ECDAF00E71ACF /* PresentationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A67C71F267ECDAF00E71ACF /* PresentationSettings.swift */; };
-		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		2152FB042600AC8F00CF470E /* TimezoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* TimezoneApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-		E0FB69CD1E660DB358C1E3F5 /* Pods_timezoneIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991E0CCD3D5B1DA62B912E7B /* Pods_timezoneIOS.framework */; };
+		BD2FC22AA1C77C5F014F9047 /* Pods_timezoneIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC9DC968E5B90219A21AA0D /* Pods_timezoneIOS.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0ABB50B62682C2F900C833B8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0A121668269FE88900971F7D /* CardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModifier.swift; sourceTree = "<group>"; };
 		0A1E215C2679C40A0026DFDB /* TimezoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneView.swift; sourceTree = "<group>"; };
 		0A1E215D2679C40A0026DFDB /* Searchbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Searchbar.swift; sourceTree = "<group>"; };
 		0A1E215E2679C40A0026DFDB /* TimezoneDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimezoneDialog.swift; sourceTree = "<group>"; };
@@ -27,13 +42,14 @@
 		0A1E2164267E2F370026DFDB /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		0A1E2166267E51080026DFDB /* HourSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourSheet.swift; sourceTree = "<group>"; };
 		0A67C71F267ECDAF00E71ACF /* PresentationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationSettings.swift; sourceTree = "<group>"; };
-		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		0ABB50AF2682668300C833B8 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/bin/ios/debugFramework/shared.framework; sourceTree = "<group>"; };
+		2152FB032600AC8F00CF470E /* TimezoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneApp.swift; sourceTree = "<group>"; };
+		5AC9DC968E5B90219A21AA0D /* Pods_timezoneIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_timezoneIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C9F6E05F0962FAF10A0FE0B /* Pods-timezoneIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timezoneIOS.release.xcconfig"; path = "Target Support Files/Pods-timezoneIOS/Pods-timezoneIOS.release.xcconfig"; sourceTree = "<group>"; };
 		60750BCD72E9F1096F02F3B1 /* Pods-timezoneIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-timezoneIOS.debug.xcconfig"; path = "Target Support Files/Pods-timezoneIOS/Pods-timezoneIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* timezoneIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timezoneIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		991E0CCD3D5B1DA62B912E7B /* Pods_timezoneIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_timezoneIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0FB69CD1E660DB358C1E3F5 /* Pods_timezoneIOS.framework in Frameworks */,
+				BD2FC22AA1C77C5F014F9047 /* Pods_timezoneIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +67,8 @@
 		136E193D71B11A2F9B79B209 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				991E0CCD3D5B1DA62B912E7B /* Pods_timezoneIOS.framework */,
+				0ABB50AF2682668300C833B8 /* shared.framework */,
+				5AC9DC968E5B90219A21AA0D /* Pods_timezoneIOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,11 +99,12 @@
 				0A1E215C2679C40A0026DFDB /* TimezoneView.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				2152FB032600AC8F00CF470E /* TimezoneApp.swift */,
 				0A1E2162267B16BF0026DFDB /* TimezoneItem.swift */,
 				0A1E2164267E2F370026DFDB /* Calculator.swift */,
 				0A1E2166267E51080026DFDB /* HourSheet.swift */,
 				0A67C71F267ECDAF00E71ACF /* PresentationSettings.swift */,
+				0A121668269FE88900971F7D /* CardModifier.swift */,
 			);
 			path = timezoneIOS;
 			sourceTree = "<group>";
@@ -108,9 +126,11 @@
 			buildConfigurationList = 7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "timezoneIOS" */;
 			buildPhases = (
 				7D29ABAF05D13DA536085B8E /* [CP] Check Pods Manifest.lock */,
+				0A1216672698D3E100971F7D /* ShellScript */,
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				F0043BBAE697C006DB0C0497 /* Frameworks */,
+				0ABB50B62682C2F900C833B8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +185,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A1216672698D3E100971F7D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
 		7D29ABAF05D13DA536085B8E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,9 +234,10 @@
 				0A67C720267ECDAF00E71ACF /* PresentationSettings.swift in Sources */,
 				0A1E21612679C40A0026DFDB /* TimezoneDialog.swift in Sources */,
 				0A1E2167267E51080026DFDB /* HourSheet.swift in Sources */,
-				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				2152FB042600AC8F00CF470E /* TimezoneApp.swift in Sources */,
 				0A1E2165267E2F370026DFDB /* Calculator.swift in Sources */,
 				0A1E21602679C40A0026DFDB /* Searchbar.swift in Sources */,
+				0A121669269FE88900971F7D /* CardModifier.swift in Sources */,
 				0A1E215F2679C40A0026DFDB /* TimezoneView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				0A1E2163267B16BF0026DFDB /* TimezoneItem.swift in Sources */,
@@ -329,7 +367,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 60750BCD72E9F1096F02F3B1 /* Pods-timezoneIOS.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = timezoneIOS/Info.plist;
@@ -337,7 +374,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.timezoneIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.timezoneIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,7 +385,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5C9F6E05F0962FAF10A0FE0B /* Pods-timezoneIOS.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = timezoneIOS/Info.plist;
@@ -356,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.timezoneIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.timezoneIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

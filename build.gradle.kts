@@ -3,11 +3,12 @@ buildscript {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_gradle_plugin}")
-        classpath("com.android.tools.build:gradle:${Versions.android_gradle_plugin}")
-//        classpath(kotlin("serialization", version = Versions.kotlin))
+        classpath(Deps.compose_gradle_plugin)
+        classpath(Deps.kotlin_gradle_plugin)
+        classpath(Deps.android_gradle_plugin)
     }
 }
 
@@ -15,6 +16,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 }
 

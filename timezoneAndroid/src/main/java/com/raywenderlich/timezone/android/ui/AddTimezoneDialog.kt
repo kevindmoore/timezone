@@ -8,6 +8,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.compose.ui.Alignment
@@ -22,16 +25,17 @@ import androidx.compose.ui.window.Dialog
 import com.raywenderlich.timezone.TimeZoneHelper
 import com.raywenderlich.timezone.TimeZoneHelperImpl
 import com.raywenderlich.timezone.android.R
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.get
 
 fun isSelected(selectedStates: Map<Int, Boolean>, index: Int): Boolean {
     return (selectedStates.containsKey(index) && (true == selectedStates[index]))
 }
+
+const val SEARCH_DELAY_MILLIS = 30L
 
 @Composable
 fun AddTimeZoneDialog(
@@ -57,26 +61,38 @@ fun AddTimeZoneDialog(
         val searchValue = remember { mutableStateOf("") }
         val coroutineScope = rememberCoroutineScope()
         val focusRequester = remember { FocusRequester() }
-        val searchFlow = remember {
-            MutableStateFlow("")
-                .debounce(500)
-                .launchIn(MainScope())
-        }
+//        val scope = rememberCoroutineScope()
+//        var currentJob by remember { mutableStateOf<Job?>(null) }
 
-        TextField(
+        OutlinedTextField(
+            singleLine = true,
             value = searchValue.value,
             modifier = Modifier.focusRequester(focusRequester),
             onValueChange = {
                 searchValue.value = it
-//                val action = debounce<Unit>(scope = MainScope()) {
-                    val index = searchZones(searchValue.value, timeZoneStrings = timeZoneStrings)
-                    if (index != -1) {
-                        coroutineScope.launch {
-                            listState.animateScrollToItem(index)
-                        }
+                if (searchValue.value.isEmpty()) {
+                    return@OutlinedTextField
+                }
+//                currentJob?.cancel()
+//                currentJob = scope.async {
+//                    delay(SEARCH_DELAY_MILLIS)
+                val index = searchZones(searchValue.value, timeZoneStrings = timeZoneStrings)
+                if (index != -1) {
+                    coroutineScope.launch {
+                        listState.animateScrollToItem(index)
                     }
+                }
 //                }
-//                action.invoke(Unit)
+            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    searchValue.value = ""
+                }) {
+                    Icon(
+                        Icons.Filled.Cancel,
+                        contentDescription = "Cancel",
+                    )
+                }
             }
         )
         DisposableEffect(Unit) {

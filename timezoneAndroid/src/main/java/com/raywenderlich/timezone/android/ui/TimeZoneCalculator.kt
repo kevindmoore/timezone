@@ -57,8 +57,7 @@ fun TimeZoneCalculator(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
-            text = "Find Mtg",
-
+            text = "Find Meeting",
             style = MaterialTheme.typography.h6
         )
         Spacer(modifier = Modifier.size(16.dp))
@@ -84,7 +83,7 @@ fun TimeZoneCalculator(
                 style = MaterialTheme.typography.body1
             )
             Spacer(modifier = Modifier.size(16.dp))
-            TimePicker(startTime)
+            timeBoxPicker(startTime)
             Spacer(modifier = Modifier.size(32.dp))
             Text(
                 modifier = Modifier
@@ -93,7 +92,7 @@ fun TimeZoneCalculator(
                 style = MaterialTheme.typography.body1
             )
             Spacer(modifier = Modifier.size(16.dp))
-            TimePicker(endTime)
+            timeBoxPicker(endTime)
         }
         Spacer(modifier = Modifier.size(16.dp))
         Row(
@@ -106,7 +105,7 @@ fun TimeZoneCalculator(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentWidth(Alignment.CenterHorizontally),
-                text = "TimeZones",
+                text = "Time Zones",
                 style = MaterialTheme.typography.h6
             )
         }
@@ -120,7 +119,7 @@ fun TimeZoneCalculator(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp),
+                    .fillMaxHeight(0.5F),
                 contentPadding = PaddingValues(16.dp),
                 state = listState,
 
@@ -175,17 +174,9 @@ fun getSelectedTimeZones(timezoneStrings: List<String>, selectedStates: Map<Int,
     return selectedTimezones
 }
 
-
-@Composable
-fun TimePicker(hours: MutableState<Int>) {
-    timeBoxPicker(hours)
-}
-
-
-
 @Composable
 fun timeBoxPicker(hours: MutableState<Int>) {
-    NumberPicker(state = hours, range = IntRange(0, 24),
+    NumberPicker(state = hours, range = IntRange(0, 23),
         onStateChanged = {
             hours.value = it
         })

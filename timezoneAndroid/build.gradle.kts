@@ -4,8 +4,6 @@ plugins {
 }
 
 dependencies {
-    //desugar utils
-//    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
     implementation(project(":shared"))
 
     implementation(Deps.napier)
@@ -53,6 +51,18 @@ dependencies {
 
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+//        useIR = true
+        freeCompilerArgs += listOf("-Xopt-in=kotlinx.coroutines.InternalCoroutinesApi",
+        "-Xopt-in=org.koin.core.component.KoinApiExtension",
+        "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi",
+        "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi")
+//        "-P",
+//        "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true")
+    }
+}
+
 android {
     compileSdk = Versions.compile_sdk
     defaultConfig {
@@ -68,23 +78,20 @@ android {
         }
     }
     compileOptions {
-        // Flag to enable support for the new language APIs
-//        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-//        sourceCompatibility = JavaVersion.VERSION_1_8
-//        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+//        sourceCompatibility = JavaVersion.VERSION_11
+//        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-//        jvmTarget = "1.8"
-        jvmTarget = "11"
+        jvmTarget = "1.8"
+//        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
         compose = true
     }
     composeOptions {
-//        kotlinCompilerVersion = Versions.compose_compiler
         kotlinCompilerExtensionVersion = Versions.compose
     }
 

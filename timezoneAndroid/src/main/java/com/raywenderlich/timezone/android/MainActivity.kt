@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainLayout()
+            Test()
         }
     }
 }
@@ -59,6 +59,10 @@ val bottomNavigationItems = listOf(
         "Calculator"
     )
 )
+@Composable
+fun Test() {
+    Text("Test")
+}
 
 @Composable
 fun MainLayout() {
@@ -119,14 +123,19 @@ fun MainLayout() {
                     }
                 }
             }
-        ) { paddingValues ->
+        ) { _ ->
             NavHost(navController, startDestination = Screen.TimeZonesScreen.title) {
                 composable(Screen.TimeZonesScreen.title) {
                     if (showAddDialog.value) {
                         AddTimeZoneDialog(
                             onAdd = {
                                 showAddDialog.value = false
-                                timezoneStrings.addAll(it)
+                                for (zone in it) {
+                                    if (!timezoneStrings.contains(zone)) {
+                                        timezoneStrings.add(zone)
+                                    }
+                                }
+                                println("Timezone strings ${timezoneStrings.size}")
                             },
                             onDismiss = {
                                 showAddDialog.value = false
@@ -135,7 +144,7 @@ fun MainLayout() {
                     }
                     TimeZoneScreen(timezoneStrings)
                 }
-                composable(Screen.TimezoneCalcScreen.title) { backStackEntry ->
+                composable(Screen.TimezoneCalcScreen.title) { _ ->
                     TimeZoneCalculator(timezoneStrings)
                 }
              }
