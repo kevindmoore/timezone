@@ -2,6 +2,7 @@ package com.raywenderlich.timezone.android
 
 import android.app.Application
 import com.raywenderlich.timezone.di.initKoin
+import com.raywenderlich.timezone.di.timezoneModule
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import org.koin.android.ext.koin.androidContext
@@ -15,6 +16,7 @@ class TimezoneApp: Application() {
         initKoin {
             androidLogger()
             androidContext(this@TimezoneApp)
+            modules(timezoneModule())
         }
     }
 }

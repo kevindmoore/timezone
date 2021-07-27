@@ -2,6 +2,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+//    id("org.jetbrains.kotlin.multiplatform")
+//    kotlin("multiplatform") version "1.5.10"
     kotlin("native.cocoapods")
     id("com.android.library")
 }

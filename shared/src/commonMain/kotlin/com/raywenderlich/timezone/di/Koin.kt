@@ -8,7 +8,6 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(commonModule())
-//        modules(commonModule(), platformModule())
     }
 
 // called by iOS etc

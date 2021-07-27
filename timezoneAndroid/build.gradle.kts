@@ -1,98 +1,118 @@
+import Deps.material
+import Deps.multiplatformSettings
+
 plugins {
-    id("com.android.application")
-    kotlin("android")
+  id("com.android.application")
+  kotlin("android")
 }
 
 dependencies {
-    implementation(project(":shared"))
+  implementation(project(":shared"))
 
-    implementation(Deps.napier)
-    implementation(Deps.material)
+  with(Deps) {
+    implementation(napier)
+    implementation(material)
+  }
+//  with(Deps.Ktor) {
+//    implementation(androidCore)
+//  }
 
-    implementation(Deps.Ktor.androidCore)
+  implementation(Deps.Kotlin.stdlib)
+  // SqlDelight
+//  with(Deps.SqlDelight) {
+//    implementation(runtimeJdk)
+//    implementation(driverAndroid)
+//  }
 
-    // SqlDelight
-    implementation(Deps.SqlDelight.runtimeJdk)
-    implementation(Deps.SqlDelight.driverAndroid)
+  // Coroutines
+  with(Deps.Coroutines) {
+    implementation(common)
+    implementation(android)
+  }
 
-    // Coroutines
-    implementation(Deps.Coroutines.common)
-    implementation(Deps.Coroutines.android)
+  // Settings
+//  implementation(multiplatformSettings)
 
-    // Settings
-    implementation(Deps.multiplatformSettings)
+  // Koin
+  with(Deps.Koin) {
+    implementation(core)
+    implementation(android)
+    implementation(compose)
+  }
+  // AndroidX
+//  with(Deps.AndroidX) {
+//    implementation(constraintlayout)
+//    implementation(appcompat)
+//    implementation(core_ktx)
+//  }
 
-    // Koin
-    implementation(Deps.Koin.core)
-    implementation(Deps.Koin.android)
-    implementation(Deps.Koin.compose)
+  //Compose
+  with(Deps.Compose) {
+    implementation(runtime)
+    implementation(runtime_livedata)
+    implementation(ui)
+    implementation(tooling)
+    implementation(foundation)
+    implementation(foundationLayout)
+    implementation(material)
+    implementation(material_icons)
+    implementation(activity)
+    implementation(navigation)
+  }
 
-    // AndroidX
-    implementation(Deps.AndroidX.constraintlayout)
-    implementation(Deps.AndroidX.appcompat)
-    implementation(Deps.AndroidX.core_ktx)
-
-    //Compose
-    implementation(Deps.Compose.runtime)
-    implementation(Deps.Compose.runtime_livedata)
-    implementation(Deps.Compose.ui)
-    implementation(Deps.Compose.tooling)
-    implementation(Deps.Compose.foundation)
-    implementation(Deps.Compose.foundationLayout)
-    implementation(Deps.Compose.material)
-    implementation(Deps.Compose.material_icons)
-    implementation(Deps.Compose.activity)
-    implementation(Deps.Compose.navigation)
-
-    //Compose Utils
-    implementation(Deps.Coil.coil)
-    implementation(Deps.Coil.insets)
-    implementation(Deps.Coil.swipe)
-
+  //Compose Utils
+  with(Deps.Coil) {
+    implementation(coil)
+    implementation(insets)
+    implementation(swipe)
+  }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
+  kotlinOptions {
 //        useIR = true
-        freeCompilerArgs += listOf("-Xopt-in=kotlinx.coroutines.InternalCoroutinesApi",
-        "-Xopt-in=org.koin.core.component.KoinApiExtension",
-        "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi",
-        "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi")
+    freeCompilerArgs += listOf(
+      "-Xopt-in=kotlinx.coroutines.InternalCoroutinesApi",
+      "-Xopt-in=org.koin.core.component.KoinApiExtension",
+      "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi",
+      "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
+    )
 //        "-P",
 //        "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true")
-    }
+  }
 }
 
 android {
-    compileSdk = Versions.compile_sdk
-    defaultConfig {
-        applicationId = "com.raywenderlich.timezone.android"
-        minSdk = Versions.min_sdk
-        targetSdk = Versions.target_sdk
-        versionCode = 1
-        versionName = "1.0"
+  compileSdk = Versions.compile_sdk
+  defaultConfig {
+    applicationId = "com.raywenderlich.timezone.android"
+    minSdk = Versions.min_sdk
+    targetSdk = Versions.target_sdk
+    versionCode = 1
+    versionName = "1.0"
+  }
+  buildTypes {
+    getByName("release") {
+      isMinifyEnabled = false
     }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+  }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 //        sourceCompatibility = JavaVersion.VERSION_11
 //        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+  }
+  kotlinOptions {
+    jvmTarget = "1.8"
 //        jvmTarget = "11"
-    }
-    buildFeatures {
-        viewBinding = true
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
-    }
+  }
+  buildFeatures {
+//    viewBinding = true
+    compose = true
+  }
+  composeOptions {
+    kotlinCompilerVersion = Versions.kotlin
+    kotlinCompilerExtensionVersion = Versions.compose
+  }
 
 }

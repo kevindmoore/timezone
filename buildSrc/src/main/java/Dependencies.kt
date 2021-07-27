@@ -7,9 +7,8 @@ object Versions {
     const val kotlin_gradle_plugin = "1.5.10"
 //    const val kotlin = "1.5.21"
 //    const val kotlin_gradle_plugin = "1.5.21"
-    const val android_gradle_plugin = "4.2.0"
-//    const val android_gradle_plugin = "7.1.0-alpha04"
-    const val compose_gradle_plugin = "0.5.0-build262"
+//   const val android_gradle_plugin = "4.2.0"
+    const val android_gradle_plugin = "7.1.0-alpha03"
     const val desktop_compose_version = "0.5.0-build262"
 
     const val coroutines = "1.5.0-native-mt"
@@ -26,9 +25,9 @@ object Versions {
     const val stately = "1.1.7"
     const val kotlinxDateTime = "0.2.1"
     const val turbine = "0.5.1"
-//    const val compose= "1.0.0-rc02"
-    const val compose= "1.0.0-beta09"
-    const val activity_compose = "1.3.0-alpha08"
+    const val compose= "1.0.0-rc02"
+//    const val compose= "1.0.0-beta09"
+    const val activity_compose = "1.3.0-beta01"
     const val coil= "0.8.1"
     const val datetime = "0.2.1"
     const val nav_compose = "2.4.0-alpha01"
@@ -53,7 +52,7 @@ object Versions {
 object Deps {
     const val android_gradle_plugin = "com.android.tools.build:gradle:${Versions.android_gradle_plugin}"
     const val kotlin_gradle_plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_gradle_plugin}"
-    const val compose_gradle_plugin = "org.jetbrains.compose:compose-gradle-plugin:${Versions.compose_gradle_plugin}"
+    const val desktop_compose_gradle_plugin = "org.jetbrains.compose:compose-gradle-plugin:${Versions.desktop_compose_version}"
     const val junit = "junit:junit:${Versions.junit}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:${Versions.desugarJdkLibs}"
@@ -66,6 +65,10 @@ object Deps {
     const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
     const val napier = "io.github.aakira:napier:${Versions.napier}"
 
+    object Kotlin {
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+
+    }
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:${Versions.AndroidX.appcompat}"
         const val core_ktx = "androidx.core:core-ktx:${Versions.AndroidX.core}"
@@ -97,6 +100,7 @@ object Deps {
 
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
+        const val uiUtil = "androidx.compose.ui:ui-util:${Versions.compose}"
         const val tooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
         const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
         const val material = "androidx.compose.material:material:${Versions.compose}"

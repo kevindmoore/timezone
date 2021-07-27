@@ -24,12 +24,13 @@ import androidx.compose.ui.unit.dp
 import com.raywenderlich.timezone.TimeZoneHelper
 import kotlinx.coroutines.delay
 import org.koin.java.KoinJavaComponent
+import org.koin.java.KoinJavaComponent.inject
 
 @Composable
 fun TimeZoneScreen(
   timezoneStrings: SnapshotStateList<String>
 ) {
-  val timezoneHelper: TimeZoneHelper = KoinJavaComponent.get(TimeZoneHelper::class.java)
+  val timezoneHelper: TimeZoneHelper by inject(TimeZoneHelper::class.java) // KoinJavaComponent.get(TimeZoneHelper::class.java)
   val listState = rememberLazyListState()
   Column(
     modifier = Modifier

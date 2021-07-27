@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Test()
+            MainLayout()
         }
     }
 }
@@ -59,10 +59,7 @@ val bottomNavigationItems = listOf(
         "Calculator"
     )
 )
-@Composable
-fun Test() {
-    Text("Test")
-}
+
 
 @Composable
 fun MainLayout() {
